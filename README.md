@@ -1,22 +1,21 @@
 # defi-amm-class
 
-Este projeto implementa um contrato inteligente de uma pool de Automated Market Maker (AMM) similar ao Uniswap v2 para fins de aprendizado. 
+Este projeto implementa um contrato inteligente de Automated Market Maker (AMM) inspirado no Uniswap v2 para fins educacionais. O contrato permite que os usuários adicionem liquidez a um par de tokens ERC20 e realizem trocas (swaps) entre os tokens usando a fórmula do produto constante (`x * y = k`). 
 
-O contrato permite que usuários forneçam liquidez para um par de tokens ERC20 e realizem trocas (swaps) entre os dois tokens usando a fórmula do produto constante (`x * y = k`). 
+As funcionalidades incluem adicionar/remover liquidez e realizar cálculos de preço de troca entre os tokens. Esta demonstração faz parte do curso de desenvolvimento em DeFi com foco em AMMs.
 
-Também oferece funções para adicionar e remover liquidez do pool, bem como calcular o preço de um token com base no outro.
 
 ## Tarefas
 
 ### Instalar o Foundry
 
-Para executar os scripts deste repostõrio você precisa instalar o Fondry.
+Para executar os scripts deste repostõrio (./script) você precisa instalar o Fondry.
 
 [Como Instalar o Foundry](https://book.getfoundry.sh/getting-started/installation)
 
 ### Iniciar uma blockchain de testes no localhost usando o anvil
 
-Em um terminal separado inicie uma blockchain na sua maquina com o anvil:
+Antes de executar os scripts, inicie uma blockchain local em sua máquina com o Anvil:
 
 ```shell
 anvil
@@ -26,7 +25,7 @@ Salve o endereço de uma das carteiras e a sua respectiva chave privada para adi
 
 ### Definir Variáveis de Ambiente
 
-Defina as variáveis de ambiente no arquivo `.env`
+Crie um arquivo `.env` na raiz do projeto e defina as variáveis de ambiente necessárias:
 
 ```md
 # CONFIGURAÇÕES DA CARTEIRA
@@ -39,47 +38,57 @@ TOKEN_B_ADDRESS=
 POOL_ADDRESS=
 ```
 
-Antes dos scripts execute:
+Antes de rodar os scripts, lembre-se de carregar as variáveis:
 
 ```shell
 source .env
 ```
 
-### Scripts
+## Scripts de Deploy e Interação
 
-####  1. Deploy dos Tokens A e B para Teste
+### 1. Deploy dos Tokens de Teste
+
+Este script implanta os tokens `TokenA` e `TokenB` na blockchain de teste:
 
 ```shell
 forge script script/DeployTokens.s.sol:DeployTokens --rpc-url 127.0.0.1:8545 --broadcast -vvvv
 ```
 
-#### 2. Deploy do AMM Pool
+### 2. Deploy do AMM Pool
+
+Implanta o contrato da pool de AMM:
 
 ```shell
 forge script script/DeployPool.s.sol:DeployPool --rpc-url 127.0.0.1:8545 --broadcast -vvvv
 ```
 
-#### 3. Adicionar Liquidez
+### 3. Adicionar Liquidez
+
+Adiciona liquidez à pool, fornecendo `TokenA` e `TokenB`:
 
 ```shell
 forge script script/AddLiquidity.s.sol:AddLiquidity --rpc-url 127.0.0.1:8545 --broadcast -vvvv
 ```
 
-#### 4. Trocar Tokens (Swap)
+### 4. Realizar Trocas (Swap)
+
+Executa uma troca entre os tokens da pool:
 
 ```shell
 forge script script/Swap.s.sol:Swap --rpc-url 127.0.0.1:8545 --broadcast -vvvv
 ```
 
-#### 5. Remover Liquidez
+### 5. Remover Liquidez
+
+Remove liquidez da pool, devolvendo os tokens ao usuário:
 
 ```shell
 forge script script/RemoveLiquidity.s.sol:RemoveLiquidity --rpc-url 127.0.0.1:8545 --broadcast -vvvv
 ```
 
-### Execute os testes
+## Executar os Testes
 
-Para executar os testes da pasta `.\test`:
+Para rodar os testes localizados na pasta `test`, use o comando abaixo, que também gera um relatório de consumo de gas:
 
 ```shell
 forge test --gas-report -vvvv
@@ -96,7 +105,7 @@ forge test --gas-report -vvvv
 
 ### 1. **Tokens Suportados**
 
-O contrato suporta dois tokens ERC20, chamados `tokenA` e `tokenB`. Estes tokens são fornecidos durante a implantação do contrato e são os únicos tokens permitidos no pool.
+O contrato suporta dois tokens ERC20, `tokenA` e `tokenB`, definidos no momento da implantação:
 
 ```solidity
 IERC20 public tokenA;  // Primeiro token do par
@@ -171,3 +180,10 @@ O contrato emite eventos para registrar as operações realizadas, como a adiç�
 
 - **`min(uint256 x, uint256 y)`:** Retorna o menor valor entre dois números. Utilizada no cálculo de liquidez.
 - **`sqrt(uint256 x)`:** Calcula a raiz quadrada de um número. Utilizada na primeira adição de liquidez para definir as proporções corretas.
+
+## Materiais de Referência
+
+- [Solidity](https://soliditylang.org/)
+- [Foundry Book](https://book.getfoundry.sh/)
+- [Uniswap v2 docs](https://docs.uniswap.org/contracts/v2/overview)
+- [Uniswap V2 contracts](https://docs.uniswap.org/contracts/v2/concepts/protocol-overview/smart-contracts)
