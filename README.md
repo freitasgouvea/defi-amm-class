@@ -150,12 +150,13 @@ function removeLiquidity(uint256 liquidity) external returns (uint256 amountA, u
 A função `swap` permite que o usuário troque uma quantidade de `tokenA` por `tokenB` (ou vice-versa) com base nas reservas do pool e na fórmula do produto constante (`x * y = k`), aplicando uma taxa de 0,3%.
 
 ```solidity
-function swap(uint256 amountIn, address tokenIn) external returns (uint256 amountOut);
+function swap(uint256 amountIn, address tokenIn, uint256 minAmountOut) external returns (uint256 amountOut);
 ```
 
 **Como funciona**:
 - O usuário especifica o token de entrada e a quantidade que deseja trocar.
 - A função calcula a quantidade de tokens de saída com base nas reservas atuais e a taxa de 0,3%.
+- Verifica se a quantidade de tokens de sáida é maior ou igual a quantidade mínima desejada.
 - O contrato transfere os tokens de saída de volta para o usuário e atualiza as reservas.
 
 ### 6. **Calcular Preço de Troca**
