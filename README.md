@@ -77,6 +77,14 @@ forge script script/Swap.s.sol:Swap --rpc-url 127.0.0.1:8545 --broadcast -vvvv
 forge script script/RemoveLiquidity.s.sol:RemoveLiquidity --rpc-url 127.0.0.1:8545 --broadcast -vvvv
 ```
 
+### Execute os testes
+
+Para executar os testes da pasta `.\test`:
+
+```shell
+forge test --gas-report -vvvv
+```
+
 ## Estrutura do Contrato
 
 ### Principais Funcionalidades
