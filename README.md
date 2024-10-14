@@ -1,6 +1,8 @@
 # defi-amm-class
 
-Este projeto implementa um contrato inteligente de Automated Market Maker (AMM) inspirado no Uniswap v2 para fins educacionais. O contrato permite que os usuários adicionem liquidez a um par de tokens ERC20 e realizem trocas (swaps) entre os tokens usando a fórmula do produto constante (`x * y = k`). 
+Este projeto implementa um contrato inteligente de Automated Market Maker (AMM) inspirado no Uniswap v2 para fins educacionais. 
+
+O contrato permite que os usuários adicionem liquidez a um par de tokens ERC20 e realizem trocas (swaps) entre os tokens usando a fórmula do produto constante (`x * y = k`). 
 
 As funcionalidades incluem adicionar/remover liquidez e realizar cálculos de preço de troca entre os tokens.
 
