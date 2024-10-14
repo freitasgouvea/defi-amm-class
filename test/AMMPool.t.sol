@@ -2,8 +2,7 @@
 pragma solidity ^0.8.0;
 
 import "forge-std/Test.sol";
-import "../src/AMMPool.sol";
-import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
+import { AMMPool } from "../src/AMMPool.sol";
 import { TestERC20 } from "../src/TestERC20.sol";
 
 contract AMMPoolTest is Test {
