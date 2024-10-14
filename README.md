@@ -154,7 +154,7 @@ function swap(uint256 amountIn, address tokenIn, uint256 minAmountOut) external 
 ```
 
 **Como funciona**:
-- O usuário especifica o token de entrada e a quantidade que deseja trocar.
+- O usuário especifica o token de entrad, a quantidade que deseja trocar e a quantidade minima dos tokens de saída que espera receber.
 - A função calcula a quantidade de tokens de saída com base nas reservas atuais e a taxa de 0,3%.
 - Verifica se a quantidade de tokens de sáida é maior ou igual a quantidade mínima desejada.
 - O contrato transfere os tokens de saída de volta para o usuário e atualiza as reservas.
