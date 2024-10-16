@@ -15,6 +15,14 @@ Para executar os scripts deste repostõrio (./script) você precisa instalar o F
 
 [Como Instalar o Foundry](https://book.getfoundry.sh/getting-started/installation)
 
+### Instalar as dependencias do projeto
+
+Após instalar o Foundry e antes de executar os scripts, é necessario fazer o build do projeto:
+
+```shell
+forge build
+```
+
 ### Iniciar uma blockchain de testes no localhost usando o anvil
 
 Antes de executar os scripts, inicie uma blockchain local em sua máquina com o Anvil:
